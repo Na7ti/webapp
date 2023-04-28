@@ -1,0 +1,9 @@
+FROM mysql:latest
+
+ENV MYSQL_DATABASE=myapp \
+    MYSQL_USER=myuser \
+    MYSQL_PASSWORD=password \
+    MYSQL_ROOT_PASSWORD=password
+
+# Copy the SQL dump into the container
+COPY mysql /docker-entrypoint-initdb.d/

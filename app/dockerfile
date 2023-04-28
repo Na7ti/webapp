@@ -1,0 +1,11 @@
+FROM node:latest
+
+WORKDIR /user/src
+
+COPY app/package*.json ./
+
+RUN npm install
+
+COPY app .
+
+EXPOSE 3000
