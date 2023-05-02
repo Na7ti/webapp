@@ -1,6 +1,8 @@
 version: "3"
 
 services:
+
+### nginx ###############################################
   nginx:
     build:
       context: .
@@ -14,6 +16,7 @@ services:
         - /etc/letsencrypt:/etc/letsencrypt # 追記
         - /var/www/web:/var/www/web # 追記
 
+### mysql ################################################
   mysql:
     build:
       context: .
@@ -21,6 +24,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
 
+### node.js ###############################################
   web:
     build: 
       context: .
@@ -38,5 +42,5 @@ services:
       image: certbot/certbot:v1.7.0
       volumes:
         - /etc/letsencrypt:/etc/letsencrypt
-        - /var/www/html:/var/www/html
+        - /var/www/web:/var/www/web
       command: ["--version"]
