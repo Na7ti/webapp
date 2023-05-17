@@ -1,70 +1,33 @@
-const arButton = document.getElementById('ar-button');
-arButton.addEventListener('click', function() {
-    window.location.href = './static/AR.html';
-});
+// const arButton = document.getElementById('ar-button');
+// arButton.addEventListener('click', function() {
+//     window.location.href = './static/AR.html';
+// });
+var num = 0;
+var watch_id;
 
-// const loadPlaces = function(coords) {
-//     // fetch data from user coords using external APIs, or simply add places data statically
-//     // please look at GeoAR.js repository on examples/click-places/places.js for full code
-//   }
-  
-//   window.onload = () => {
-//       const scene = document.querySelector('a-scene');
-  
-//       // first get current user location
-//       return navigator.geolocation.getCurrentPosition(function (position) {
-  
-//           // than use it to load from remote APIs some places nearby
-//           loadPlaces(position.coords)
-//               .then((places) => {
-//                   places.forEach((place) => {
-//                       const latitude = place.location.lat;
-//                       const longitude = place.location.lng;
-  
-//                       // add place icon
-//                       const icon = document.createElement('a-image');
-//                       icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-//                       icon.setAttribute('name', place.name);
-//                       icon.setAttribute('src', '../assets/map-marker.png');
-  
-//                       // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-//                       icon.setAttribute('scale', '20, 20');
-  
-//                       icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
-  
-//                       const clickListener = function(ev) {
-//                           ev.stopPropagation();
-//                           ev.preventDefault();
-              
-//                           const name = ev.target.getAttribute('name');
-              
-//                           const el = ev.detail.intersection && ev.detail.intersection.object.el;
-              
-//                           if (el && el === ev.target) {
-//                               const label = document.createElement('span');
-//                               const container = document.createElement('div');
-//                               container.setAttribute('id', 'place-label');
-//                               label.innerText = name;
-//                               container.appendChild(label);
-//                               document.body.appendChild(container);
-              
-//                               setTimeout(() => {
-//                                   container.parentElement.removeChild(container);
-//                               }, 1500);
-//                           }
-//                       };
-              
-//                       icon.addEventListener('click', clickListener);
-  
-//                       scene.appendChild(icon);
-//                   });
-//               })
-//       },
-//           (err) => console.error('Error in retrieving position', err),
-//           {
-//               enableHighAccuracy: true,
-//               maximumAge: 0,
-//               timeout: 27000,
-//           }
-//       );
-//   };
+function test() {
+    watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
+}
+
+function clear() {
+    navigator.geolocation.clearWatch(watch_id);
+}
+
+function test2(position) {
+
+    var geo_text = "緯度:" + position.coords.latitude + "\n";
+    geo_text += "経度:" + position.coords.longitude + "\n";
+    geo_text += "高度:" + position.coords.altitude + "\n";
+    geo_text += "位置精度:" + position.coords.accuracy + "\n";
+    geo_text += "高度精度:" + position.coords.altitudeAccuracy  + "\n";
+    geo_text += "移動方向:" + position.coords.heading + "\n";
+    geo_text += "速度:" + position.coords.speed + "\n";
+
+    var date = new Date(position.timestamp);
+
+    geo_text += "取得時刻:" + date.toLocaleString() + "\n";
+    geo_text += "取得回数:" + (++num) + "\n";
+
+    document.getElementById('position_view').innerHTML = geo_text;
+
+}

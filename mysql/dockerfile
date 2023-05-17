@@ -5,5 +5,5 @@ ENV MYSQL_DATABASE=myapp \
     MYSQL_PASSWORD=password \
     MYSQL_ROOT_PASSWORD=password
 
-# Copy the SQL dump into the container
+# SQLダンプをコンテナにコピーする
 COPY mysql /docker-entrypoint-initdb.d/
