@@ -6,9 +6,6 @@ RUN apt-get update && apt-get install -y git
 
 # Delete all files in /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html
-WORKDIR /usr/share/nginx/web
-# Clone ar.js repository to /usr/share/nginx/web
-RUN git clone https://github.com/AR-js-org/AR.js.git .
 
 # Make directores
 WORKDIR /usr/share/nginx/web/static

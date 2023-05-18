@@ -2,34 +2,27 @@
 <html>
 <head>
     <meta charset="utf-8">
-</head>
-<body>
-    
-    <button onclick="test()">test</button>
-    <button onclick="clear()">clear</button>
-    
-    <pre id="position_view"></pre>
-    
-    <script src="../src/script.js"></script>
-</body>
-</html>
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 </head>
 <body>
-    <h1>Welcome to my website</h1>
-    <p>Click the button below to view the AR scene</p>
-    <button id="ar-button">View AR scene</button>
-</body>
-<header>
+    <!-- ウェブカメラの起動、embedded ←こいつをつけると画面全体を占領するためへんにズームした状態になっちゃう -->
+    <a-scene vr-mode-ui="enabled: false"
+    arjs='sourceType: webcam; debugUIEnabled: false;'
+    renderer="antialias: true"
+    >
+    <a-camera gps-camera posision="0 0 0"></a-camera>
+    
+    <!-- debugMode -->
+    <pre id="position_view"></pre>
+    
+    </a-scene>
+
+    <!-- ↓ デバック用・位置情報 -->
+    <script src="../src/debug.js"></script>
     <script src="../src/script.js"></script>
-</header>
+</body>
 </html>
- -->
