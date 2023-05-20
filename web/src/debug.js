@@ -29,3 +29,5 @@ function test2(position) {
     document.getElementById('position_view').innerHTML = geo_text;
 
 }
+
+test()

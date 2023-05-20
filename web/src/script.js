@@ -1,3 +1,4 @@
-document.querySelector("body").addEventListener("click", function() {
+function submit() {
     alert("clicked!!")
-})
+}
+

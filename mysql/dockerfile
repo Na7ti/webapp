@@ -1,9 +1,0 @@
-FROM mysql:latest
-
-ENV MYSQL_DATABASE=myapp \
-    MYSQL_USER=myuser \
-    MYSQL_PASSWORD=password \
-    MYSQL_ROOT_PASSWORD=password
-
-# SQLダンプをコンテナにコピーする
-COPY mysql /docker-entrypoint-initdb.d/
