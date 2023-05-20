@@ -1,3 +1,55 @@
-h1 {
-    color: yellow;
+@media screen and(max-width: 480px) {
+    body {
+        width: 480px;
+    }
+}
+@media screen and(max-width: 960px) {
+    body {
+        width: 960px;
+    }
+}
+@media screen and(max-width: 1280px) {
+    body {
+        width: 1280px;
+    }
+}
+
+/* 初期化 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* debug用スタイル */
+#position_view {
+    position: fixed;
+    top: 50px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#ar_camera {
+    margin-bottom: 50px; /* フッタースペースの高さを調整 */ 
+}
+
+/* 一番下のメニュー */
+#menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* フッタースペースの高さを指定 */
+    background-color: #f1f1f1; /* フッタースペースの背景色を指定 */
+}
+
+#menu ul {
+    list-style: none;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#menu ul li {
+    margin: auto;
 }
