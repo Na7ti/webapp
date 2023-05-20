@@ -1,0 +1,29 @@
+# ベースイメージ
+FROM nginx:latest
+
+# Gitインストール
+RUN apt-get update && apt-get install -y git
+
+# Delete all files in /usr/share/nginx/html
+RUN rm -rf /usr/share/nginx/html
+
+# Make directores
+WORKDIR /usr/share/nginx/web/static
+COPY web/static/ /usr/share/nginx/web/static
+WORKDIR /usr/share/nginx/web/src
+COPY web/src /usr/share/nginx/web/src
+
+# 秘密鍵
+WORKDIR /etc/nginx/ssl
+RUN openssl genrsa -out /etc/nginx/ssl/server.key 2048
+RUN openssl req -new  -days 3650 -key /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.csr -subj "/C=JP/ST=Tokyo/O=cert/CN=cert"
+RUN openssl x509 -days 3650 -req -signkey /etc/nginx/ssl/server.key -in /etc/nginx/ssl/server.csr -out /etc/nginx/ssl/server.crt
+
+# Remove default Nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy Nginx configuration file
+COPY nginx/conf.d/default.conf /etc/nginx/conf.d/
+
+# Expose port 443
+EXPOSE 443
