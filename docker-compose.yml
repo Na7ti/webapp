@@ -11,6 +11,7 @@ services:
       - "443:443"
     depends_on:
       - mysql
+      - app
     volumes:
         # - /etc/nginx/conf.d:/etc/nginx/conf.d # 参考ページには記載があったがが正常に動作せずコメントアウト
         - /etc/letsencrypt:/etc/letsencrypt # 追記

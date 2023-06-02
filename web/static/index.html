@@ -11,23 +11,27 @@
     <!-- AR.js ライブラリの読み込み -->
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <!-- 画像やマーカーなどの自然な特徴を使用してARオブジェクトを追跡する -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>  
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <!-- A-Frameのアプリケーション内でAR機能を有効にする -->
     <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
     <!-- ウェブカメラの起動、embedded ←こいつをつけると画面全体を占領するためへんにズームした状態になっちゃう -->
     <a-scene vr-mode-ui="enabled: false" arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
         renderer="antialias: true; alpha: true; logarithmicDepthBuffer: true;" loading-screen="enabled: false;">
 
+        <a-box rotation="20 40 0" color="red" scale="2 1 2" position="0 1 -5"></a-box>
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
+    <div id="comment"></div>
+
     <!-- debugMode -->
-    <pre id="position_view"></pre>
-    <script src="../src/debug.js" async></script>
+    <!-- <pre id="position_view"></pre>
+    <script src="../src/debug.js" async></script> -->
     <script src="../src/script.js" async></script>
+    <script src="../src/a-frame.js" async></script>
 </body>
 
 <footer>
@@ -36,7 +40,7 @@
             <li id="message"><a href="#"><img src="" alt="message"></a></li>
             <li id="stamp"><a href="#"><img src="" alt="stamp"></a></li>
             <li id="home"><a href="#"><img src="" alt="home"></a></li>
-            <li id="submit"><input type="image" src="" alt="submit" onclick="submit()"></li>
+            <li id="submit"><input type="image" src="" alt="submit"></li>
             <li id="profile"><a href="#"><img src="" alt="profile"></a></li>
         </ul>
     </nav>
