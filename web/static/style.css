@@ -61,6 +61,14 @@ body {
     right: 0;
 }
 
+#clear_btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 10vw;
+    height: 10vw;
+}
+
 body {
     margin-bottom: 55px;
     /* フッタースペースの高さを調整 */
@@ -75,9 +83,8 @@ body {
     left: 0;
     width: 100%;
     height: 55px;
-    /* フッタースペースの高さを指定 */
-    background-color: #f1f1f1;
     /* フッタースペースの背景色を指定 */
+    background-image: linear-gradient(45deg, #ffc107, #ff7b5f);
 }
 
 #menu ul {
@@ -89,4 +96,7 @@ body {
 
 #menu ul li {
     margin: auto;
+}
+#menu ul li:active {
+    background-color: rgba(200, 200, 200, 0.5); 
 }

@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>archat</title>
     <link rel="stylesheet" href="style.css">
     <!-- A-Frame ライブラリの読み込み -->
@@ -12,16 +15,16 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <!-- 画像やマーカーなどの自然な特徴を使用してARオブジェクトを追跡する -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <!-- A-Frameのアプリケーション内でAR機能を有効にする -->
-    <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
 </head>
 
 <body>
     <!-- ウェブカメラの起動、embedded ←こいつをつけると画面全体を占領するためへんにズームした状態になっちゃう -->
-    <a-scene vr-mode-ui="enabled: false" arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
-        renderer="antialias: true; alpha: true; logarithmicDepthBuffer: true;" loading-screen="enabled: false;">
+    <a-scene vr-mode-ui="enabled: false" arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 
-        <a-box rotation="20 40 0" color="red" scale="2 1 2" position="0 1 -5"></a-box>
+        <a-entity id="hit-box" hit-box>
+            <!-- <a-box rotation="20 40 0" color="red" scale="2 1 2" position="0 1 -5"></a-box> -->
+        </a-entity>
+
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
@@ -37,11 +40,11 @@
 <footer>
     <nav id="menu">
         <ul>
-            <li id="message"><a href="#"><img src="" alt="message"></a></li>
-            <li id="stamp"><a href="#"><img src="" alt="stamp"></a></li>
-            <li id="home"><a href="#"><img src="" alt="home"></a></li>
-            <li id="submit"><input type="image" src="" alt="submit"></li>
-            <li id="profile"><a href="#"><img src="" alt="profile"></a></li>
+            <li id="message"><a href="#"><img src="../icon/massage.png" alt="message"></a></li>
+            <li id="stamp"><a href="#"><img src="../icon/stamp.png" alt="stamp"></a></li>
+            <li id="home"><a href="#"><img src="../icon/home.png" alt="home"></a></li>
+            <li id="submit"><input type="image" src="../icon/submit.png" alt="submit"></li>
+            <li id="profile"><a href="#"><img src="../icon/profile.png" alt="profile"></a></li>
         </ul>
     </nav>
 </footer>

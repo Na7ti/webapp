@@ -12,6 +12,8 @@ WORKDIR /usr/share/nginx/web/static
 COPY web/static/ /usr/share/nginx/web/static
 WORKDIR /usr/share/nginx/web/src
 COPY web/src /usr/share/nginx/web/src
+WORKDIR /usr/share/nginx/web/icon
+COPY web/icon /usr/share/nginx/web/icon
 
 # 秘密鍵
 WORKDIR /etc/nginx/ssl
