@@ -36,13 +36,13 @@ document.getElementById('submit').addEventListener('click', () => {     // submi
     submit_btn.id = "submit_btn";
     submit_btn.type = "image";
     submit_btn.alt = "send";
-    submit_btn.src = "../icon/send.png";
+    submit_btn.src = "images/send.svg";
 
     // クリアボタン
     clear_btn.id = "clear_btn";
     clear_btn.type = "image";
     clear_btn.alt = "clear";
-    clear_btn.src = "../icon/close.png";
+    clear_btn.src = "images/close.svg";
 
     // commentにstrを追加
     document.getElementById('comment').appendChild(str);

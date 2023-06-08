@@ -16,18 +16,6 @@
     }
 }
 
-/* 初期化 */
-* {
-    margin: 0;
-    padding: 0;
-}
-
-/* 画面スクロールを禁止する */
-html,
-body {
-    overflow: hidden;
-}
-
 /* debug用スタイル */
 #position_view {
     position: fixed;
@@ -37,6 +25,22 @@ body {
     padding: 10px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 初期化 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 画面スクロールを禁止する */
+html,
+body {
+    overflow: hidden;
 }
 
 #comment {
@@ -90,13 +94,26 @@ body {
 #menu ul {
     list-style: none;
     display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#menu a {
+    /* 上下左右中心 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*  */
+    width: 75px;
+    height: 55px;
 }
 
 #menu ul li {
     margin: auto;
+    width: 75px;
+    height: 55px;
 }
-#menu ul li:active {
-    background-color: rgba(200, 200, 200, 0.5); 
+
+#menu img {
+    width: 40px;
 }
