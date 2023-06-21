@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- no cache -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <!-- ******** -->
     <title>archat</title>
     <link rel="stylesheet" href="static/style.css">
     <!-- A-Frame ライブラリの読み込み -->
@@ -21,13 +23,18 @@
     <!-- ウェブカメラの起動、embedded ←こいつをつけると画面全体を占領するためへんにズームした状態になっちゃう -->
     <a-scene vr-mode-ui="enabled: false" arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 
-        <a-entity id="hit-box" hit-box>
-            <!-- <a-box rotation="20 40 0" color="red" scale="2 1 2" position="0 1 -5"></a-box> -->
-        </a-entity>
+        <!-- ユーザー設置のARオブジェクト -->
+        <a-entity id="sandbox"></a-entity>
 
-        <a-camera gps-camera rotation-reader></a-camera>
+        <!-- 10メートルごとにオブジェクト位置の更新 -->
+        <a-camera gps-camera="gpsMinDistance:10;" rotation-reader>
+            <!-- 画面中央のカーソル -->
+            <!-- これがないと当たり判定ができない -->
+            <a-cursor scale="1 0.4 0"></a-cursor>
+        </a-camera>
     </a-scene>
 
+    <!-- 入力欄の位置 -->
     <div id="comment"></div>
 
     <!-- debugMode -->
@@ -41,8 +48,8 @@
     <nav id="menu">
         <ul>
             <li id="message"><a href="#"><img src="images/message.svg" alt="message"></a></li>
-            <li id="stamp"><a href="#"><img src="images/stamp.svg" alt="stamp"></a></li>
-            <li id="home"><a href="#"><img src="images/home.svg" alt="home"></a></li>
+            <li id="stamp"><a href="/app"><img src="images/stamp.svg" alt="stamp"></a></li>
+            <li id="home"><a href=""><img src="images/home.svg" alt="home"></a></li>
             <li id="submit"><a href="#"><img src="images/submit.svg" alt="submit"></a></li>
             <li id="profile"><a href="#"><img src="images/profile.svg" alt="profile"></a></li>
         </ul>

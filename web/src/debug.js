@@ -2,12 +2,12 @@ var num = 0;
 var watch_id;
 
 function test() {
-    //位置情報の取得開始
+    // 位置情報の取得開始
     watch_id = navigator.geolocation.watchPosition(test2, function (e) { alert(e.message); }, { "enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000 });
 }
 
 function clear() {
-    //位置情報の取得終了
+    // 位置情報の取得終了
     navigator.geolocation.clearWatch(watch_id);
 }
 

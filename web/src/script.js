@@ -8,7 +8,6 @@ document.addEventListener('touchmove', disableScroll, { passive: false });
 // ***************** 投稿内容記入欄 *******************
 var clicked = false;
 document.getElementById('submit').addEventListener('click', () => {     // submitのclickイベント
-    console.log("comment!!!");      // デバッグ用出力
     let theText = "";               // 文字列入力
 
     // submitが押されている状態なら再出現

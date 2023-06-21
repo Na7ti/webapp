@@ -2,7 +2,7 @@ version: "3"
 
 services:
 
-### nginx ###############################################
+  ### nginx ###############################################
   nginx:
     build:
       context: .
@@ -10,23 +10,27 @@ services:
     ports:
       - "443:443"
     depends_on:
-      - mysql
+      - app
     volumes:
-        # - /etc/nginx/conf.d:/etc/nginx/conf.d # 参考ページには記載があったがが正常に動作せずコメントアウト
-        - /etc/letsencrypt:/etc/letsencrypt # 追記
-        - /var/www/web:/var/www/web # 追記
+      # - /etc/nginx/conf.d:/etc/nginx/conf.d # 参考ページには記載があったがが正常に動作せずコメントアウト
+      - /etc/letsencrypt:/etc/letsencrypt # 追記
+      - /var/www/web:/var/www/web # 追記
 
-### mysql ################################################
+  ### mysql ################################################
   mysql:
     build:
       context: .
       dockerfile: mysql/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
 
-### node.js ###############################################
-  web:
-    build: 
+  ### node.js ###############################################
+  app:
+    build:
       context: .
       dockerfile: app/Dockerfile
     volumes:
@@ -35,12 +39,12 @@ services:
       - "3000:3000"
     depends_on:
       - mysql
-    command: "npm start"
+    # command: "npm start"
 
-### certbot ################################################
+    ### certbot ################################################
   certbot:
-      image: certbot/certbot:v1.7.0
-      volumes:
-        - /etc/letsencrypt:/etc/letsencrypt
-        - /var/www/web:/var/www/web
-      command: ["--version"]
+    image: certbot/certbot:v1.7.0
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/web:/var/www/web
+    command: [ "--version" ]
