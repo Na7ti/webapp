@@ -74,12 +74,5 @@ document.getElementById('submit').addEventListener('click', () => {     // submi
         clear_btn.remove();
         clicked = false;
     });
-
-    // 投稿削除
-    // a-textボタンのクリックイベント
-    document.getElementById('home').addEventListener('click', () => {
-        plane.remove()
-        text.remove()
-    })
 });
 // **************************************************

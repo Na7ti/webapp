@@ -16,18 +16,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt # 追記
       - /var/www/web:/var/www/web # 追記
 
-  ### mysql ################################################
-  mysql:
-    build:
-      context: .
-      dockerfile: mysql/Dockerfile
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-    ports:
-      - "3306:3306"
-    expose:
-      - "3306"
-
   ### node.js ###############################################
   app:
     build:
@@ -40,6 +28,18 @@ services:
     depends_on:
       - mysql
     # command: "npm start"
+
+  ### mysql ################################################
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql/Dockerfile
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
 
     ### certbot ################################################
   certbot:
