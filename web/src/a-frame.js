@@ -1,11 +1,3 @@
-// const ids = process.env.IDS.split(',');
-// const texts = process.env.TEXTS.split(',');
-// const latitudes = process.env.LATITUDES.split(',');
-// const longitudes = process.env.LONGITUDES.split(',');
-// console.log(ids);
-// console.log(texts);
-// console.log(latitudes);
-// console.log(longitudes);
 
 // aframeMutlByte関数の定義
 function aframeMutlByte() {
@@ -59,15 +51,15 @@ function vector(y, distance) {
 i = 0;
 // submit関数
 function submit(str) {
-
+    
     // 現在位置の取得開始
     navigator.geolocation.getCurrentPosition(function (position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-
+        
         // コメント回数のインクリメント
         i++;
-
+        
         // htmlタグの作成
         const entity = document.createElement('a-entity');
         const plane = document.createElement('a-plane');

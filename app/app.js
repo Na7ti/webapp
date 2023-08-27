@@ -19,28 +19,47 @@ connection.connect((err) => {
     console.error('MySQL接続エラー:', err);
   } else {
     console.log('MySQL接続成功');
+    // MySQLクエリの実行
+    connection.query('SELECT * FROM mytable', (err, results) => {
+      if (err) {
+        console.error('MySQLクエリエラー:', err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        // クエリ結果を表示
+        console.log(results);
+        // 取得したデータを配列に格納
+        data.push(...results);
+
+        // 環境変数にデータを設定
+        process.env.IDS = data.map((row) => row.id).join(',');
+        process.env.TEXTS = data.map((row) => row.text).join(',');
+        process.env.LATITUDES = data.map((row) => row.latitude).join(',');
+        process.env.LONGITUDES = data.map((row) => row.longitude).join(',');
+      }
+      const ids = process.env.IDS.split(',');
+      const texts = process.env.TEXTS.split(',');
+      const latitudes = process.env.LATITUDES.split(',');
+      const longitudes = process.env.LONGITUDES.split(',');
+      console.log(ids);
+      console.log(texts);
+      console.log(latitudes);
+      console.log(longitudes);
+    });
   }
 });
 
-app.get('/', (req, res) => {
-  // MySQLクエリの実行
-  connection.query('SELECT * FROM mytable', (err, results) => {
-    if (err) {
-      console.error('MySQLクエリエラー:', err);
-      res.status(500).send('Internal Server Error');
-    } else {
-      // クエリ結果を表示
-      console.log(results);
-      // // 取得したデータを配列に格納
-      // data.push(...results);
+app.get('/app', (req, res) => {
+  // 環境変数を取得
+  const ids = process.env.IDS.split(',');
+  const texts = process.env.TEXTS.split(',');
+  const latitudes = process.env.LATITUDES.split(',');
+  const longitudes = process.env.LONGITUDES.split(',');
 
-      // // 環境変数にデータを設定
-      // process.env.IDS = data.map((row) => row.id).join(',');
-      // process.env.TEXTS = data.map((row) => row.text).join(',');
-      // process.env.LATITUDES = data.map((row) => row.latitude).join(',');
-      // process.env.LONGITUDES = data.map((row) => row.longitude).join(',');
-    }
-  });
+  // 環境変数を表示
+  res.send(`ids: ${ids}
+            texts: ${texts}
+            latitudes: ${latitudes}
+            longitudes: ${longitudes}`);
 });
 
 app.listen(port, () => {

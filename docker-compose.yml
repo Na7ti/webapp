@@ -36,7 +36,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     networks:
       - backend
-    command: [ "sh", "-c", "sleep 40 && npm run dev" ]
+    command: [ "sh", "-c", "sleep 60 && npm run dev" ]
 
   ### mysql ################################################
   mysql:
