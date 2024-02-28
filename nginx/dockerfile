@@ -2,20 +2,20 @@
 FROM nginx:latest
 
 # Gitインストール
-RUN apt-get update && apt-get install -y git
+# RUN apt-get update && apt-get install -y git
 
 # Delete all files in /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html
 
 # Make directores
 WORKDIR /usr/share/nginx/web/static
-COPY web/static/ /usr/share/nginx/web/static
+COPY app/web/static/ /usr/share/nginx/web/static
 WORKDIR /usr/share/nginx/web/src
-COPY web/src /usr/share/nginx/web/src
+COPY app/web/src /usr/share/nginx/web/src
 WORKDIR /usr/share/nginx/web/icon
-COPY web/icon /usr/share/nginx/web/icon
+COPY app/web/icon /usr/share/nginx/web/icon
 WORKDIR /usr/share/nginx/web/3dmodels
-COPY web/3dmodels /usr/share/nginx/web/3dmodels
+COPY app/web/3dmodels /usr/share/nginx/web/3dmodels
 
 # RUN gzip /usr/share/nginx/web/icon/*.svg
 

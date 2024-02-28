@@ -95,15 +95,15 @@ function submit(str) {
         console.log("ID:" + entity.getAttribute('class') + "「" + str + "」が投稿されました。");
 
         // 30秒間目の前にオブジェクトを置く
-        setTimeout(() => {
-            console.log("30秒!");
-            // position属性を消す
-            entity.removeAttribute("position");
-            plane.removeAttribute("position");
-            // 現在位置でオブジェクトを固定
-            entity.setAttribute("gps-entity-place", "latitude: " + latitude + "; longitude: " + longitude + ";");
-            plane.setAttribute("gps-entity-place", "latitude: " + latitude + "; longitude: " + longitude + ";");
-        }, 30000);
+        // setTimeout(() => {
+        //     console.log("30秒!");
+        //     // position属性を消す
+        //     entity.removeAttribute("position");
+        //     plane.removeAttribute("position");
+        //     // 現在位置でオブジェクトを固定
+        //     entity.setAttribute("gps-entity-place", "latitude: " + latitude + "; longitude: " + longitude + ";");
+        //     plane.setAttribute("gps-entity-place", "latitude: " + latitude + "; longitude: " + longitude + ";");
+        // }, 30000);
     });
 };
 

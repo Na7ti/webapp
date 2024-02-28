@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- 自動翻訳の拒否 -->
+    <meta http-equiv="Content-Language" content="ja">
+    <meta name="google" content="notranslate">
+    <!-- no cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- ******** -->
+    <title>archat</title>
+    <link rel="stylesheet" href="static/destyle.css">
+    <link rel="stylesheet" href="static/style.css">
+    <!-- A-Frame ライブラリの読み込み -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- AR.js ライブラリの読み込み -->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <!-- 画像やマーカーなどの自然な特徴を使用してARオブジェクトを追跡する -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+
+<header>
+    <!-- ハンバーガーメニュー -->
+    <!-- <input id="ham_menu" type="image" alt="ham_menu" src="/web/icon/menu.svg">  -->
+    <div id="wrapper">
+        <p class="btn-gnavi">
+            <span></span>
+            <span></span>
+            <span></span>
+        </p>
+        <nav id="global-navi">
+
+            <ul class="menu">
+
+                <li><a href="">TOP</a></li>
+                <li><a href="">NEWS</a></li>
+                <li><a href="">ABOUT</a></li>
+                <li><a href="">ACCESS</a></li>
+                <li><a href="">CONTACT</a></li>
+                <li><a class="debug" href="">DEBUG</a></li>
+                <li><a href="">SETTING</a></li>
+
+        </nav>
+    </div>
+</header>
+
+<body>
+    <!-- ウェブカメラの起動、embedded ←こいつをつけると画面全体を占領するためへんにズームした状態になっちゃう -->
+    <a-scene renderer="colorManagement: true" vr-mode-ui="enabled: false"
+        arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
+        <!-- ユーザー設置のARオブジェクト -->
+        <!-- a-asset-item -->
+        <a-assets id="items">
+            <a-asset-item id="item:0" src="3dmodels/simple-free-tree.gltf"></a-asset-item>
+            <a-asset-item id="item:1" src="3dmodels/simple-fern.gltf"></a-asset-item>
+            <a-asset-item id="item:2" src="3dmodels/pathfinder-apex-legends.gltf"></a-asset-item>
+            <a-asset-item id="item:3" src="3dmodels/bedroom.gltf"></a-asset-item>
+            <a-asset-item id="item:4" src="3dmodels/marcket.gltf"></a-asset-item>
+            <a-asset-item id="item:5" src="3dmodels/chess.gltf"></a-asset-item>
+            <a-asset-item id="item:6" src="3dmodels/car1948.gltf"></a-asset-item>
+            <a-asset-item id="item:7" src="3dmodels/pizzashop.gltf"></a-asset-item>
+            <a-asset-item id="item:8" src="3dmodels/plane.gltf"></a-asset-item>
+            <a-asset-item id="item:9" src="3dmodels/rubicksCube.gltf"></a-asset-item>
+            <a-asset-item id="item:10" src="3dmodels/sakura.gltf"></a-asset-item>
+            <a-asset-item id="item:11" src="3dmodels/store.gltf"></a-asset-item>
+            <a-asset-item id="item:12" src="3dmodels/sunshine.gltf"></a-asset-item>
+            <a-asset-item id="item:13" src="3dmodels/town.gltf"></a-asset-item>
+        </a-assets>
+        <!-- a-obj-model -->
+        <a-entity id="models"></a-entity>
+        <!-- 投稿内容 -->
+        <a-entity id="sandbox"></a-entity>
+
+        <!-- 10メートルごとにオブジェクト位置の更新 -->
+        <a-camera id="camera" gps-camera="gpsMinDistance:10;" rotation-reader>
+            <!-- 画面中央のカーソル -->
+            <!-- これがないと当たり判定ができない -->
+            <a-cursor scale="1 0.4 0"></a-cursor>
+        </a-camera>
+    </a-scene>
+
+    <!-- 入力欄の位置 -->
+    <div id="comment"></div>
+
+    <!-- スタンプ画面 -->
+    <div id="window" style="display: none;">
+        <ul class="stamps">
+            <li><img class="stamp_li" id="1" src="images/simple-fern.jpg" alt=""></li>
+            <li><img class="stamp_li" id="10" src="images/sakura.jpg" alt=""></li>
+            <li><img class="stamp_li" id="12" src="images/sunshine.jpg" alt=""></li>
+            <li><img class="stamp_li" id="9" src="images/rubicksCube.jpg" alt=""></li>
+            <li><img class="stamp_li" id="7" src="images/pizzeriaShop.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <!-- debugMode -->
+    <!-- <pre id="position_view"></pre>
+    <script src="../src/debug.js" async></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="src/script.js" async></script>
+    <script src="src/a-frame.js" async></script>
+</body>
+
+<footer>
+    <nav id="menu">
+        <ul>
+            <li id="stamp"><a href="#"><img src="images/stamp.svg" alt="stamp"></a></li>
+            <li id="home"><a href=""><img src="images/home.svg" alt="home"></a></li>
+            <li id="submit"><a href="#"><img src="images/submit.svg" alt="submit"></a></li>
+        </ul>
+    </nav>
+</footer>
+
+</html>
