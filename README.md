@@ -29,4 +29,10 @@
 
 - ## デモ
 
-    ![](.github/国産.mp4)
+    ![](.github\国産\スライド0.JPG)
+    ![](.github\国産\スライド1.JPG)
+    ![](.github\国産\スライド2.JPG)
+    ![](.github\国産\スライド3.JPG)
+    ![](.github\国産\スライド4.JPG)
+    ![](.github\国産\スライド5.JPG)
+    ![](.github\国産\スライド6.JPG)
