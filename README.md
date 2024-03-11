@@ -28,8 +28,6 @@
   - Git, Github
 
 - ## デモ
-
-    ![demo1](https://github.com/NicoSoup/webapp/assets/82674565/18c7b99e-ce47-44f6-80c8-d62dd42df72d)
     
     ![demo2](https://github.com/NicoSoup/webapp/assets/82674565/319f3b11-34b7-4477-a54c-49f995838aa7)
 
